@@ -95,7 +95,7 @@ begin
   FormatSelector.addItemsWithTitles(Types);
 
   FormatSelector.setAction(sel_getUid('selectFormat:'));
-  FormatSelector.setTarget(NSObjectToID(TNSApplication.Wrap(TNSapplication.OCClass.sharedApplication)));
+  //FormatSelector.setTarget(NSObjectToID(TNSApplication.Wrap(TNSapplication.OCClass.sharedApplication)));
 
   AccessoryView.addSubview(ViewLabel);
   AccessoryView.addSubview(FormatSelector);
