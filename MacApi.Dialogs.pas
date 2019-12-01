@@ -22,6 +22,7 @@ type
   procedure selectFormat(sender: Pointer);
 
   function FileTypeAView(Types: NSArray): NSView;
+  
   /// <summary>Simplified NSOpenPanel Invoker. Available flags: 'multiple', 'others', 'create', 'hidden'.</summary>
   function InvokeNSOpenPanel(const Title: String; const InitialDir: String;
     const Flags: String; const AllowedFileTypes: TArray<String>;
@@ -32,7 +33,7 @@ type
     const Flags: String; const FileTypesDescription: TArray<String>; const AllowedFileTypes: TArray<String>;
     var ADir: String): Boolean;
 
-  /// <summary>Simplified NSOpenPanel Invoker in Directory selection mode. Available flags: 'multiple'.</summary>
+  /// <summary>Simplified NSOpenPanel Invoker in Directory selection mode. Available flags: 'multiple', 'create', 'hidden'.</summary>
   function InvokeNSDirOpenPanel(const Title: String; const InitialDir: String;
     const Flags: String; var ADir: String): Boolean;
 
@@ -222,18 +223,31 @@ function InvokeNSDirOpenPanel(const Title: String; const InitialDir: String;
 var
   NSInitialDir: NSURL;
   LDlgResult: NSInteger;
-  multiple: Boolean;
+  multiple, create, hidden: Boolean;
 begin
   {$REGION 'Flags Assignment'}
   if Flags.Contains('multiple') then
     multiple := True
   else
     multiple := False;
+
+  if Flags.Contains('create') then
+    create := True
+  else
+    create := False;
+
+  if Flags.Contains('hidden') then
+    hidden := True
+  else
+    hidden := False;
   {$ENDREGION}
+
 
   Result := False;
   OpenPanel := TNSOpenPanel.Wrap(TNSOpenPanel.OCClass.openPanel);
   OpenPanel.setAllowsMultipleSelection(multiple);
+  OpenPanel.setCanCreateDirectories(create);
+  OpenPanel.setCanSelectHiddenExtension(hidden);
   OpenPanel.setCanChooseFiles(False);
   OpenPanel.setCanChooseDirectories(True);
   if InitialDir <> '' then
