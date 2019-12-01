@@ -31,7 +31,7 @@ Simplified NSSavePanel creation.
 
 ```Pascal
 function InvokeNSSavePanel (const Title: String; const InitialDir: String; 
-                            const Flags: String; const FileTypesDescription: TArray<String;
+                            const Flags: String; const FileTypesDescription: TArray<String>;
                             const AllowedFileTypes: TArray<String>; var ADir: String): Boolean
 ```
 
