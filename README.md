@@ -66,8 +66,8 @@ function InvokeNSOpenDirPanel(const Title: String; const InitialDir: String;
 
 ## Examples
 ```Pascal
-//NSOpenPanel // Form contains TButton and TEdit.
-procedure TNSDialogsTestForm.NSOpenPanelButton (Sender: TObject);
+// NSOpenPanel // Form contains TButton and TEdit.
+procedure TNSDialogsTestForm.NSOpenPanelButtonClick (Sender: TObject);
 var
   ADir: String;
 begin
@@ -75,5 +75,30 @@ begin
     NSOpenPanelPath.Text := ADir
   else
     NSOpenPanelPath.Text := '';
+end;
+```
+```Pascal
+// NSSavePanel // Form contains TButton and TEdit
+procedure TNSDialogsTestForm.NSSavePanelButtonClick (Sender: TObject);
+var
+  ADir: String;
+begin
+  if InvokeNSSavePanel ('Save database', '', 'others create hidden', ['Database Files', 'Plain Text Files'], ['db', 'txt'], Adir) then
+    NSSavePanelPath.Text := ADir
+  else
+    NSSavePanelPath.Text := '';
+begin
+end;
+```
+```Pascal
+// NSOpenPanel in Directory selection mode // Form contains TButton and TEdit
+procedure TNSDialogsTestForm.NSOpenDirPanelButtonClick (Sender: TObject);
+var
+  ADir: String;
+begin
+  if InvokeNSOpenDirPanel ('Select project directory', '', 'hidden', ADir) then
+    NSOpenDirPanelPath.Text := ADir
+  else
+    NSOpenDirPanelPath.Text := '';
 end;
 ```
