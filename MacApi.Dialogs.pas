@@ -11,10 +11,10 @@ uses
   MacApi.AppKit, MacApi.Foundation, MacApi.CocoaTypes, Macapi.Helpers, MacApi.ObjCRuntime, Macapi.ObjectiveC;
 
 type
-  PopUpButtonHandler = interface(NSObject)
+  {PopUpButtonHandler = interface(NSObject)
     property
 
-  end;
+  end;}
 
   /// <summary>Converts standard Delphi array of Strtings to MacApi NSArray</summary>
   function ArrayToNSArray(const Arr: TArray<String>): NSArray;
@@ -96,7 +96,8 @@ begin
   FormatSelector.addItemsWithTitles(Types);
 
   FormatSelector.setAction(sel_getUid('selectFormat:'));
-  //FormatSelector.setTarget(NSObjectToID(TNSApplication.Wrap(TNSapplication.OCClass.sharedApplication)));
+  
+  FormatSelector.setTarget(nil);  //Here must be NSApplicationDelegate, but it is not accessable
 
   AccessoryView.addSubview(ViewLabel);
   AccessoryView.addSubview(FormatSelector);
