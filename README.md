@@ -1,6 +1,6 @@
 <h1 align="center">MacApi.Dialogs</h1>
 <p align="center">Simplified NSOpenPanel and NSSavePanel Delphi bridge using MacApi default units</p>
-<p align="center"><b>Lily Stilson // 2019</b></p>
+<p align="center"><b>Lily Stilson // 2019 - 2020</b></p>
 <hr>
 
 ## Usage
