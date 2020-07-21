@@ -1,8 +1,8 @@
 (*      macOS Dialogs. Simplified.    *)
 (*      Unit by Lily Stilson [2019]   *)
-(*      Licence: MIT // Build: 001    *)
+(*      Licence: MIT                  *)
 
-unit MacApi.Dialogs;
+unit Macapi.Dialogs;
 
 interface
 
